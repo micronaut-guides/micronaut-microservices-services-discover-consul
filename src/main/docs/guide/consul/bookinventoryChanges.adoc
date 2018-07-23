@@ -19,3 +19,10 @@ Also, append to `bookinventory`.`application.yml` the following snippet:
 include::{sourceDir}/bookinventory/src/main/resources/application.yml[tag=consul]
 ----
 
+Disable consul registration in tests:
+
+[source,yaml]
+.bookinventory/src/main/resources/application-test.yml
+----
+include::{sourceDir}/bookinventory/src/main/resources/application-test.yml[tag=consul]
+----

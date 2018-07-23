@@ -42,3 +42,11 @@ include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookreco
 ----
 
 <1> Use the configuration value `micronaut.application.name` used in `bookinventory` as service `id`.
+
+Disable consul registration in tests:
+
+[source,yaml]
+.bookrecommendation/src/main/resources/application-test.yml
+----
+include::{sourceDir}/bookrecommendation/src/main/resources/application-test.yml[tag=consul]
+----

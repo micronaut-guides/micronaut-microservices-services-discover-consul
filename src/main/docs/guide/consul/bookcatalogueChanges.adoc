@@ -21,3 +21,11 @@ include::{sourceDir}/bookcatalogue/src/main/resources/application.yml[tag=consul
 
 
 Previous configuration registers a Micronaut app with Consul with minimal configuration. Discover a more complete list of Configuration options at https://docs.micronaut.io/snapshot/api/io/micronaut/discovery/consul/ConsulConfiguration.html[ConsulConfiguration].
+
+Disable consul registration in tests:
+
+[source,yaml]
+.bookcatalogue/src/main/resources/application-test.yml
+----
+include::{sourceDir}/bookcatalogue/src/main/resources/application-test.yml[tag=consul]
+----

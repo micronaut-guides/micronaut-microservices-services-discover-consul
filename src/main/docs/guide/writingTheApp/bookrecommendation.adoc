@@ -114,7 +114,7 @@ Create a file named `application-test.yml` which is used in the test environment
 [source,yaml]
 .bookrecommendation/src/main/resources/application-test.yml
 ----
-include::{sourceDir}/bookrecommendation/src/main/resources/application-test.yml[]
+include::{sourceDir}/bookrecommendation/src/main/resources/application-test.yml[tag=port]
 ----
 
 <1> Start the micronaut microservice at a random port when running the tests.
