@@ -18,13 +18,13 @@ public class BooksController {
 
     @Produces(MediaType.TEXT_PLAIN) // <3>
     @Get("/stock/{isbn}") // <4>
-    public Single<HttpResponse<Boolean>> stock(@NotNull @NotBlank String isbn) {
+    public HttpResponse<Boolean> stock(@NotNull @NotBlank String isbn) {
         Optional<BookInventory> bookInventoryOptional = bookInventoryByIsbn(isbn);
         if (!bookInventoryOptional.isPresent()) {
-           return Single.just(HttpResponse.notFound());
+           return HttpResponse.notFound();
         }
         BookInventory bookInventory = bookInventoryOptional.get();
-        return Single.just(HttpResponse.ok(bookInventory.getStock() > 0 ? Boolean.TRUE : Boolean.FALSE));
+        return HttpResponse.ok(bookInventory.getStock() > 0 ? Boolean.TRUE : Boolean.FALSE);
     }
 
     private Optional<BookInventory> bookInventoryByIsbn(String isbn) {

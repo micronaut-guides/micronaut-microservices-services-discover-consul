@@ -1,9 +1,9 @@
 package example.micronaut.bookrecommendation;
 
+import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.reactivex.Flowable;
-import io.reactivex.schedulers.Schedulers;
 
 @Controller("/books") // <1>
 public class BookController {
@@ -21,7 +21,7 @@ public class BookController {
     public Flowable<BookRecommendation> index() {
         return bookCatalogueOperations.findAll()
                 .flatMapMaybe(b -> bookInventoryOperations.stock(b.getIsbn())
-                                    .filter(rsp -> rsp.body())
+                                    .filter(HttpResponse::body)
                                     .map(rsp -> b))
                 .map(book -> new BookRecommendation(book.getName()));
     }

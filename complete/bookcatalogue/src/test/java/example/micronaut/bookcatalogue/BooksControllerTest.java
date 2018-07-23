@@ -36,7 +36,7 @@ public class BooksControllerTest {
     }
 
     @Test
-    public void testRetrieveBooks() throws Exception {
+    public void testRetrieveBooks() {
         List<Book> books = client.jsonStream(HttpRequest.GET("/books"), Book.class).toList().blockingGet();
         assertEquals(3, books.size());
         assertTrue(books.contains(new Book("1491950358", "Building Microservices")));

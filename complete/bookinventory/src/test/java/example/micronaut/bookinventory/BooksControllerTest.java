@@ -55,7 +55,7 @@ public class BooksControllerTest {
         HttpClientResponseException ex = null;
         noExceptionThrown = true;
         try {
-            rsp = rxHttpClient.toBlocking().exchange(HttpRequest.GET("/books/stock/XXXXX"), Boolean.class);
+            rxHttpClient.toBlocking().exchange(HttpRequest.GET("/books/stock/XXXXX"), Boolean.class);
         } catch (HttpClientResponseException e) {
             noExceptionThrown = false;
             ex = e;
