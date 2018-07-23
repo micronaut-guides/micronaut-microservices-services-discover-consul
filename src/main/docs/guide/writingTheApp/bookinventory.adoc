@@ -1,0 +1,59 @@
+Create the `bookinventory` microservice:
+
+`mn create-app example.micronaut.bookinventory.bookinventory`
+
+Modify `build.gradle` to add validation capabilities.
+
+[source,java]
+.bookinventory/build.gradle
+----
+include::{sourceDir}/bookinventory/build.gradle[tag=validation]
+----
+
+The previous command creates a folder named `bookinventory` and a Micronaut app inside it with
+default package: `example.micronaut.bookinventory`.
+
+Create a Controller:
+
+[source,java]
+.bookinventory/src/main/java/example/micronaut/bookinventory/BooksController.java
+----
+include::{sourceDir}/bookinventory/src/main/java/example/micronaut/bookinventory/BooksController.java[]
+----
+
+The previous controller uses a POJO:
+
+[source,java]
+.bookinventory/src/main/java/example/micronaut/bookinventory/BookInventory.java
+----
+include::{sourceDir}/bookinventory/src/main/java/example/micronaut/bookinventory/BookInventory.java[]
+----
+
+Write a test:
+
+[source,java]
+.bookinventory/src/test/java/example/micronaut/bookinventory/BooksControllerTest.java
+----
+include::{sourceDir}/bookinventory/src/test/java/example/micronaut/bookinventory/BooksControllerTest.java[]
+----
+
+Edit `application.yml`
+
+[source,yaml]
+.bookinventory/src/main/resources/application.yml
+----
+include::{sourceDir}/bookinventory/src/main/resources/application.yml[tag=mn]
+----
+
+<1> Configure the application name. The app name will be used later in the tutorial.
+<2> Configure the app to listen at port 8082
+
+Create a file named `application-test.yml` which is used in the test environment:
+
+[source,yaml]
+.bookinventory/src/main/resources/application-test.yml
+----
+include::{sourceDir}/bookinventory/src/main/resources/application-test.yml[]
+----
+
+<1> Start the micronaut microservice at a random port when running the tests.

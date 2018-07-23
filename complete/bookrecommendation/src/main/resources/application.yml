@@ -1,0 +1,14 @@
+#tag::mn[]
+micronaut:
+    application:
+        name: bookrecommendation
+    server:
+        port: 8080
+#end::mn[]
+#tag::consul[]
+consul:
+  client:
+    registration:
+      enabled: true
+    defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"
+#end::consul[]

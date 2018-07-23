@@ -1,0 +1,18 @@
+gettingStarted: 
+  title: Getting Started
+  requirements: What you will need
+  solution: Solution
+writingTheApp:
+  title: Writing the App
+  bookcatalogue: Catalogue Microservice
+  bookinventory: Inventory Microservice
+  bookrecommendation: Recommendation Microservice
+runningTheApp: Running the app
+consul:
+  title: Consul and Micronaut
+  consulinstall: Install Consul via Docker
+  micronautandconsul: Integrate Consul
+  bookcatalogueChanges: Book Catalogue
+  bookinventoryChanges: Book Inventory
+  bookrecommendationChanges: Book Recommendation
+  runningTheAppAfterConsul: Running the App

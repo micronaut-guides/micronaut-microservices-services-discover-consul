@@ -1,0 +1,40 @@
+Modify `build.gradle` to add `discovery-client` dependency.
+
+[source,java]
+.bookrecommendation/build.gradle
+----
+dependencies {
+    ...
+    ..
+    .
+include::{sourceDir}/bookrecommendation/build.gradle[tag=discoveryclient]
+}
+----
+
+Also, append to `bookrecommendation`.`application.yml` the following snippet:
+
+[source,yaml]
+.bookrecommendation/src/main/resources/application.yml
+----
+include::{sourceDir}/bookrecommendation/src/main/resources/application.yml[tag=consul]
+----
+
+Modify `BookInventoryClient` and `BookCatalogueClient` to use the service id instead of a harcoded ip.
+
+[source,java]
+.bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookCatalogueClient.java
+----
+include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookCatalogueClient.java[tag=packageandimports]
+
+include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookCatalogueClient.java[tag=consul]
+include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookCatalogueClient.java[tag=clazz]
+----
+
+[source,java]
+.bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookInventoryClient.java
+----
+include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookInventoryClient.java[tag=packageandimports]
+
+include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookInventoryClient.java[tag=consul]
+include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookInventoryClient.java[tag=clazz]
+----
