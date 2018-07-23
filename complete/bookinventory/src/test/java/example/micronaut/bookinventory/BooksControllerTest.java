@@ -20,7 +20,7 @@ public class BooksControllerTest {
     private static EmbeddedServer server;
     private static RxHttpClient rxHttpClient;
 
-    @BeforeClass
+    @BeforeClass // <1>
     public static void setupServer() {
         server = ApplicationContext.run(EmbeddedServer.class);
         rxHttpClient = server
@@ -28,7 +28,7 @@ public class BooksControllerTest {
                 .createBean(RxHttpClient.class, server.getURL());
     }
 
-    @AfterClass
+    @AfterClass // <1>
     public static void stopServer() {
         if(server != null) {
             server.stop();

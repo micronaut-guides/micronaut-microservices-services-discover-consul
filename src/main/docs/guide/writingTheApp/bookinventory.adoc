@@ -21,6 +21,11 @@ Create a Controller:
 include::{sourceDir}/bookinventory/src/main/java/example/micronaut/bookinventory/BooksController.java[]
 ----
 
+<1> Define https://docs.micronaut.io/snapshot/api/io/micronaut/validation/Validated.html[Validated] annotation at the class level to signal any class that requires validation.
+<2> The class is defined as a controller with the http://docs.micronaut.io/snapshot/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
+<3> By default a Micronaut's response uses `application/json` as `Content-Type`. We are returning a String not a JSON object. Because of that, we set it to `text/plain`.
+<4> The `@Get` annotation is used to map the index method to `/books/stock/{isbn}` requests that use an HTTP GET.
+
 The previous controller uses a POJO:
 
 [source,java]
@@ -36,6 +41,8 @@ Write a test:
 ----
 include::{sourceDir}/bookinventory/src/test/java/example/micronaut/bookinventory/BooksControllerTest.java[]
 ----
+
+<1> For JUnit you can write methods to start and stop the server for the scope of the test
 
 Edit `application.yml`
 

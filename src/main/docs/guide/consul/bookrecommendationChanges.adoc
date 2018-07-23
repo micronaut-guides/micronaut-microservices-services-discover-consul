@@ -30,6 +30,8 @@ include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookreco
 include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookCatalogueClient.java[tag=clazz]
 ----
 
+<1> Use the configuration value `micronaut.application.name` used in `bookcatalogue` as service `id`.
+
 [source,java]
 .bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookInventoryClient.java
 ----
@@ -38,3 +40,5 @@ include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookreco
 include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookInventoryClient.java[tag=consul]
 include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookInventoryClient.java[tag=clazz]
 ----
+
+<1> Use the configuration value `micronaut.application.name` used in `bookinventory` as service `id`.

@@ -1,9 +1,9 @@
 #tag::mn[]
 micronaut:
     application:
-        name: bookrecommendation
+        name: bookrecommendation # <1>
     server:
-        port: 8080
+        port: 8080 # <2>
 #end::mn[]
 #tag::consul[]
 consul:

@@ -11,6 +11,10 @@ default package: `example.micronaut.bookcatalogue`.
 include::{sourceDir}/bookcatalogue/src/main/java/example/micronaut/bookcatalogue/BooksController.java[]
 ----
 
+<1> The class is defined as a controller with the http://docs.micronaut.io/snapshot/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
+<2> The `@Get` annotation is used to map the index method to `/books` requests that use an HTTP GET.
+<3> You can return reactive types from your controller methods.
+
 The previous controller responds a `Flowable<Book>`. Create the `Book` POJO:
 
 [source,java]
@@ -26,6 +30,8 @@ Write a test:
 ----
 include::{sourceDir}/bookcatalogue/src/test/java/example/micronaut/bookcatalogue/BooksControllerTest.java[]
 ----
+
+<1> For JUnit you can write methods to start and stop the server for the scope of the test
 
 Edit `application.yml`
 

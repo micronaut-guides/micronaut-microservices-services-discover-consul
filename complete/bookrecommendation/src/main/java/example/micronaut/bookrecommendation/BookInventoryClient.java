@@ -9,11 +9,11 @@ import io.reactivex.Single;
 
 /*
 //tag::harcoded[]
-@Client("http://localhost:8082")
+@Client("http://localhost:8082") // <1>
 //end::harcoded[]
 */
 //tag::consul[]
-@Client(id = "bookinventory")
+@Client(id = "bookinventory") // <1>
 //end::consul[]
 //tag::clazz[]
 public interface BookInventoryClient extends BookInventoryOperations {

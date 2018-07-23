@@ -9,19 +9,20 @@ import io.reactivex.Single;
 import io.reactivex.schedulers.Schedulers;
 import org.reactivestreams.Publisher;
 
-@Controller("/books")
+@Controller("/books") // <1>
 public class BookController {
 
     private final BookCatalogueOperations bookCatalogueOperations;
     private final BookInventoryOperations bookInventoryOperations;
 
-    public BookController(BookCatalogueOperations bookCatalogueOperations, BookInventoryOperations bookInventoryOperations) {
+    public BookController(BookCatalogueOperations bookCatalogueOperations,
+                          BookInventoryOperations bookInventoryOperations) { // <2>
         this.bookCatalogueOperations = bookCatalogueOperations;
         this.bookInventoryOperations = bookInventoryOperations;
     }
 
-    @Get("/")
-    Flowable<BookRecommendation> index() {
+    @Get("/") // <3>
+    public Flowable<BookRecommendation> index() {
         return bookCatalogueOperations.findAll()
                 .parallel(10)
                 .runOn(Schedulers.io())
