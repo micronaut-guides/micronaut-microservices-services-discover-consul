@@ -32,8 +32,8 @@ public class BookController {
                 .flatMapMaybe(b -> bookInventoryOperations.stock(b.getIsbn())
                         .onErrorResumeNext(throwable -> {
                             if (throwable instanceof HttpClientResponseException) {
-                                HttpClientException ex = ((HttpClientResponseException) throwable);
-                                if (((HttpClientResponseException) ex).getResponse().getStatus().equals(HttpStatus.NOT_FOUND)) {
+                                HttpClientResponseException ex = ((HttpClientResponseException) throwable);
+                                if (ex.getResponse().getStatus().equals(HttpStatus.NOT_FOUND)) {
                                     return Single.just(HttpResponse.ok(Boolean.FALSE));
                                 }
                             }
