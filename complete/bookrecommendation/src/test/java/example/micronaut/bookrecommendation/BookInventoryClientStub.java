@@ -3,10 +3,13 @@ package example.micronaut.bookrecommendation;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.context.env.Environment;
 import io.micronaut.http.HttpResponse;
+import io.micronaut.http.annotation.QueryValue;
 import io.micronaut.retry.annotation.Fallback;
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 import javax.inject.Singleton;
+import javax.validation.constraints.NotBlank;
 
 @Requires(env = Environment.TEST)
 @Fallback
@@ -14,13 +17,13 @@ import javax.inject.Singleton;
 public class BookInventoryClientStub implements BookInventoryOperations {
 
     @Override
-    public Single<HttpResponse<Boolean>> stock(String isbn) {
+    public Maybe<Boolean> stock(@QueryValue @NotBlank String isbn) {
         if(isbn.equals("1491950358")) {
-            return Single.just(HttpResponse.ok(Boolean.TRUE));
+            return Maybe.just(Boolean.TRUE);
 
         } else if(isbn.equals("1680502395")) {
-            return Single.just(HttpResponse.ok(Boolean.FALSE));
+            return Maybe.just(Boolean.FALSE);
         }
-        return Single.just(HttpResponse.notFound());
+        return Maybe.empty();
     }
 }
