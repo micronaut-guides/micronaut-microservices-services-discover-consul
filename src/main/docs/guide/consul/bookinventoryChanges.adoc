@@ -11,7 +11,7 @@ include::{sourceDir}/bookinventory/build.gradle[tag=discoveryclient]
 }
 ----
 
-Also, append to `bookinventory`.`application.yml` the following snippet:
+Also, modify the `application.yml` of the `bookinventory` application with the following snippet:
 
 [source,yaml]
 .bookinventory/src/main/resources/application.yml
