@@ -16,3 +16,5 @@ consul:
   bookinventoryChanges: Book Inventory
   bookrecommendationChanges: Book Recommendation
   runningTheAppAfterConsul: Running the App
+nextSteps:
+  title: Next Steps
