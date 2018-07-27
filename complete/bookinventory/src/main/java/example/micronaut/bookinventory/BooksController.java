@@ -1,17 +1,11 @@
 package example.micronaut.bookinventory;
 
-import io.micronaut.http.HttpResponse;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.Produces;
-import io.micronaut.http.annotation.QueryValue;
 import io.micronaut.validation.Validated;
-import io.reactivex.Maybe;
-import io.reactivex.Single;
-
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.util.Optional;
 
 @Validated // <1>
@@ -20,13 +14,13 @@ public class BooksController {
 
     @Produces(MediaType.TEXT_PLAIN) // <3>
     @Get("/stock/{isbn}") // <4>
-    public Maybe<Boolean> stock(@NotBlank String isbn) {
+    public Boolean stock(@NotBlank String isbn) {
         Optional<BookInventory> bookInventoryOptional = bookInventoryByIsbn(isbn);
         if (!bookInventoryOptional.isPresent()) {
-           return Maybe.empty(); // <5>
+           return null; // <5>
         }
         BookInventory bookInventory = bookInventoryOptional.get();
-        return Maybe.just(bookInventory.getStock() > 0 ? Boolean.TRUE : Boolean.FALSE);
+        return bookInventory.getStock() > 0 ? Boolean.TRUE : Boolean.FALSE;
     }
 
     private Optional<BookInventory> bookInventoryByIsbn(String isbn) {
