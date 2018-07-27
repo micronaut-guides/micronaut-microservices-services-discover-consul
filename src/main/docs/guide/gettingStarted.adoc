@@ -1,2 +1,7 @@
 In this guide, we are going to create three microservices and register them with https://www.consul.io[Consul] Service discovery.
+
+____
+Consul is a distributed service mesh to connect, secure, and configure services across any runtime platform and public or private cloud
+____
+
 You will discover how Micronaut eases Consul integration.
