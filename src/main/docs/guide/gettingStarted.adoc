@@ -1,2 +1,2 @@
-In this guide, we are going to create three microservices and register them with Consul Service discovery.
+In this guide, we are going to create three microservices and register them with https://www.consul.io[Consul] Service discovery.
 You will discover how Micronaut eases Consul integration.
