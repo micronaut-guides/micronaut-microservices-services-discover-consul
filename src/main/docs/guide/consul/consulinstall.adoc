@@ -10,8 +10,6 @@ The following screenshots show how to install/run Consul via https://kitematic.c
 
 image::kitematic-consul-1.png[]
 
-image::kitematic-consul-2.png[]
-
 Configure ports:
 
-image::kitematic-consul-3.png[]
+image::kitematic-consul-2.png[]
