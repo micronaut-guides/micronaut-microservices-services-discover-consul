@@ -12,3 +12,7 @@ consul:
       enabled: true
     defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"
 #end::consul[]
+endpoints:
+  health:
+    enabled: true
+    sensitive: false
