@@ -1,1 +1,32 @@
+Lets describe the microservices you are going to build through the tutorial.
+
+* `bookcatalogue` - It returns a list of books. It uses a domain consisting of a book name and isbn.
+
+* `bookinventory` - It exposes an endpoint to check whether a book has sufficient stock to fullfil an order.  I uses a domain consisting of a stock level and isbn.
+
+* `bookrecommendation` - It consumes previous services and exposes and endpoint which recommends book names which are in stock.
+
+Initially we are going to hardcode the addresses where the different services are in the `bookcatalogue` service.
+
+image::hardcoded.svg[]
+
+As shown in the previous image, the `bookcatalogue` hardcodes references to its collaborators.
+
+In the second part of this tutorial we are going to use a discovery service.
+
+o learn about registration patterns:
+
+We will use a **self‑registration pattern**. Thus, each service instance is responsible for registering and
+deregistering itself with the service registry.
+Also, if required, a service instance sends heartbeat requests to prevent its registration from expiring.
+
+Services register when they start up:
+
+image::discovery-service-registration.svg[]
+
+We will use **client‑side service discovery**, clients query the service registry,
+select an available instance, and make a request.
+
+image::discovery-service-flow.svg[]
+
 include::{commondir}/common-annotationprocessors.adoc[]
