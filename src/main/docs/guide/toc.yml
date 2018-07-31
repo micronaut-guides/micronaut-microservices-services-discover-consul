@@ -4,17 +4,13 @@ gettingStarted:
   solution: Solution
 writingTheApp:
   title: Writing the App
-  bookcatalogue: Catalogue Microservice
-  bookinventory: Inventory Microservice
-  bookrecommendation: Recommendation Microservice
-runningTheApp: Running the app
-consul:
-  title: Consul and Micronaut
-  consulinstall: Install Consul via Docker
-  micronautandconsul: Integrate Consul
+zipkin:
+  title: Zipkin and Micronaut
+  zipkininstall: Install Zipkin via Docker
+  micronautandzipkin: Integrate Zipkin
   bookcatalogueChanges: Book Catalogue
   bookinventoryChanges: Book Inventory
   bookrecommendationChanges: Book Recommendation
-  runningTheAppAfterConsul: Running the App
+runningTheApp: Running the app
 nextSteps:
   title: Next Steps

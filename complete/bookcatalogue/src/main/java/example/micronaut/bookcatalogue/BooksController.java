@@ -2,15 +2,16 @@ package example.micronaut.bookcatalogue;
 
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
-import io.reactivex.Flowable;
+import io.micronaut.tracing.annotation.ContinueSpan;
 
 import java.util.Arrays;
 import java.util.List;
 
-@Controller("/books") // <1>
+@Controller("/books")
 public class BooksController {
 
-    @Get("/") // <2>
+    @ContinueSpan // <1>
+    @Get("/")
     List<Book> index() {
         Book buildingMicroservices = new Book("1491950358", "Building Microservices");
         Book releaseIt = new Book("1680502395", "Release It!");

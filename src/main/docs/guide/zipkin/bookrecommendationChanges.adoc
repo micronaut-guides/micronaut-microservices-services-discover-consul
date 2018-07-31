@@ -1,0 +1,57 @@
+Modify `build.gradle` to add `tracing` dependency.
+
+[source,java]
+.bookrecommendation/build.gradle
+----
+dependencies {
+    ...
+    ..
+    .
+include::{sourceDir}/bookrecommendation/build.gradle[tag=tracing]
+}
+----
+
+Also, to send tracing spans to Zipkin the minimal configuration requires you add the following dependencies to `build.gradle`:
+
+[source,java]
+.bookrecommendation/build.gradle
+----
+dependencies {
+    ...
+    ..
+    .
+include::{sourceDir}/bookrecommendation/build.gradle[tag=zipkin]
+}
+----
+
+
+Append to `bookrecommendation` service `application.yml` the following snippet:
+
+[source,yaml]
+.bookrecommendation/src/main/resources/application.yml
+----
+include::{sourceDir}/bookrecommendation/src/main/resources/application.yml[tag=zipkin]
+----
+
+<1> Trace 100% of requests.
+
+Previous configuration registers a Micronaut app with Consul with minimal configuration. Discover a more complete list of Configuration options at https://docs.micronaut.io/snapshot/api/io/micronaut/discovery/consul/ConsulConfiguration.html[ConsulConfiguration].
+
+Disable consul registration in tests:
+
+[source,yaml]
+.bookrecommendation/src/main/resources/application-test.yml
+----
+include::{sourceDir}/bookrecommendation/src/main/resources/application-test.yml[tag=zipkin]
+----
+
+Annotate `BookController` method with `@NewSpan`:
+
+[source,java]
+.bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookController.java
+----
+include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookrecommendation/BookController.java[]
+----
+
+<1> The `@NewSpan` annotation will create a new span, wrapping the method call or reactive type.
+

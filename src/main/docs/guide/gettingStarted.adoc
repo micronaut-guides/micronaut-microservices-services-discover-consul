@@ -1,7 +1,7 @@
-In this guide, we are going to create three microservices and register them with https://www.consul.io[Consul] Service discovery.
+In this guide, we are going to integrate https://zipkin.io[Zipkin] in a Micronaut app composed of three microservices.
 
 ____
-Consul is a distributed service mesh to connect, secure, and configure services across any runtime platform and public or private cloud
+Zipkin is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in microservice architectures. It manages both the collection and lookup of this data.
 ____
 
-You will discover how Micronaut eases Consul integration.
+You will discover how Micronaut eases Zipkin integration.

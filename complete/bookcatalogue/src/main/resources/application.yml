@@ -1,18 +1,16 @@
-#tag::mn[]
 micronaut:
     application:
-        name: bookcatalogue # <1>
+        name: bookcatalogue
     server:
-        port: 8081 # <2>
-#end::mn[]
-#tag::consul[]
-consul:
-  client:
-    registration:
-      enabled: true
-    defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"
-#end::consul[]
+        port: 8081
 endpoints:
   health:
     enabled: true
     sensitive: false
+#tag::zipkin[]
+tracing:
+    zipkin:
+        enabled: true
+        sampler:
+            probability: 1 # <1>
+#end::zipkin[]
