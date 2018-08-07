@@ -63,6 +63,10 @@ dependencies {
     runtime 'io.zipkin.reporter2:zipkin-reporter:2.5.0'
     compile 'io.opentracing.brave:brave-opentracing:0.30.0'
     //end::zipkin[]
+
+    //tag::hamcrest[]
+    testCompile "org.hamcrest:hamcrest-all:$hamcrestAllVersion"
+    //end::hamcrest[]
 }
 
 shadowJar {
