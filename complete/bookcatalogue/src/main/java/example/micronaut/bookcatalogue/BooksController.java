@@ -2,7 +2,6 @@ package example.micronaut.bookcatalogue;
 
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
-import io.micronaut.tracing.annotation.ContinueSpan;
 
 import java.util.Arrays;
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.List;
 @Controller("/books")
 public class BooksController {
 
-    @ContinueSpan // <1>
     @Get("/")
     List<Book> index() {
         Book buildingMicroservices = new Book("1491950358", "Building Microservices");

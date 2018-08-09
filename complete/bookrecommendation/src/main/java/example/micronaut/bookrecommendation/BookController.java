@@ -2,7 +2,6 @@ package example.micronaut.bookrecommendation;
 
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
-import io.micronaut.tracing.annotation.NewSpan;
 import io.reactivex.Flowable;
 
 @Controller("/books")
@@ -17,7 +16,6 @@ public class BookController {
         this.bookInventoryOperations = bookInventoryOperations;
     }
 
-    @NewSpan("bookrecommendations") // <1>
     @Get("/")
     public Flowable<BookRecommendation> index() {
         return bookCatalogueOperations.findAll()
