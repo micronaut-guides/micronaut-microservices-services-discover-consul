@@ -4,13 +4,13 @@ import io.micronaut.context.ApplicationContext
 import io.micronaut.core.type.Argument
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.RxHttpClient
-import io.micronaut.runtime.server.EmbeddedServer
+import org.junit.Assume
 import spock.lang.AutoCleanup
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 
-class AcceptanceSpec extends Specification {
+class AcceptanceSpec extends Specification implements MicroserviceHealth {
 
     @Shared
     @AutoCleanup
@@ -22,32 +22,10 @@ class AcceptanceSpec extends Specification {
 
     def "verifies three microservices collaborate together with consul service registration"() {
 
-        when:
-        PollingConditions conditions = new PollingConditions(timeout: 5)
-        StatusResponse statusResponse = client.toBlocking().retrieve(HttpRequest.GET('http://localhost:8080/health'), StatusResponse)
-
-        then:
-        conditions.eventually {
-            statusResponse.status == 'UP'
-        }
-
-        when:
-        conditions = new PollingConditions(timeout: 5)
-        statusResponse = client.toBlocking().retrieve(HttpRequest.GET('http://localhost:8081/health'), StatusResponse)
-
-        then:
-        conditions.eventually {
-            statusResponse.status == 'UP'
-        }
-
-        when:
-        conditions = new PollingConditions(timeout: 5)
-        statusResponse = client.toBlocking().retrieve(HttpRequest.GET('http://localhost:8082/health'), StatusResponse)
-
-        then:
-        conditions.eventually {
-            statusResponse.status == 'UP'
-        }
+        given:
+        Assume.assumeTrue(isUp('http://localhost:8080'))
+        Assume.assumeTrue(isUp('http://localhost:8081'))
+        Assume.assumeTrue(isUp('http://localhost:8082'))
 
         when:
         List<BookRecommendation> books = client.toBlocking().retrieve(HttpRequest.GET('/books'), Argument.of(List, BookRecommendation))

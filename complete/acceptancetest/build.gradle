@@ -1,5 +1,19 @@
-plugins {
-    id 'groovy'
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "gradle.plugin.io.github.http-builder-ng:http-plugin:0.1.1"
+    }
+}
+apply plugin: "groovy"
+apply plugin: "io.github.http-builder-ng.http-plugin"
+
+repositories {
+    jcenter()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencies {
@@ -9,9 +23,30 @@ dependencies {
     testCompile "io.micronaut:runtime-groovy:$micronautVersion"
     testCompile "io.micronaut:http-client:$micronautVersion"
 }
+apply from: "${rootProject.projectDir}/gradle/testVerbose.gradle"
 
-repositories {
-    jcenter()
+import io.github.httpbuilderng.http.HttpTask
+
+task consulStatus(type:HttpTask){
+    config {
+        request.uri = 'http://localhost:8500'
+    }
+    get {
+        request.uri.path = '/v1/status/leader'
+        response.success {
+            logger.quiet('Consul running')
+        }
+        response.failure {
+            throw new GradleException("Consul is not runnnig")
+        }
+    }
 }
 
-apply from: "${rootProject.projectDir}/gradle/testVerbose.gradle"
+test.dependsOn(consulStatus)
+
+consulStatus.onlyIf {
+    !System.getenv("TRAVIS")
+}
+test.onlyIf {
+    !System.getenv("TRAVIS")
+}
