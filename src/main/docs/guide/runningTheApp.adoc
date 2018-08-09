@@ -28,7 +28,6 @@ bookinventory $ ./gradlew run
 
 Run `bookrecommendation` microservice:
 
-[source, bash]
 ----
 bookrecommendation $ ./gradlew run
 Starting a Gradle Daemon, 2 busy and 2 stopped Daemons could not be reused, use --status for details
@@ -47,19 +46,3 @@ You can run a cURL command to test the whole application:
 $ curl http://localhost:8080/books
 [{"name":"Building Microservices"}
 ----
-
-You can then navigate to http://localhost:9411 t to access the Jaeger UI.
-
-The previous request generates a traces composed by 9 spans.
-
-image::zipkinui.png[]
-
-In the previous image, you can see that:
-
-- Whenever a Micronaut HTTP client executes a new network request, it creates a new Span.
-- Whenever a Micronaut Server receives a request, it creates a new Span.
-
-The `stock.isbn` tags that we configured with `@SpanTag` are present.
-
-Moreover, you can see the requests to `bookinventory` are done in paralell.
-

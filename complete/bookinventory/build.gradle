@@ -25,7 +25,6 @@ repositories {
     mavenLocal()
     mavenCentral()
     maven { url "https://jcenter.bintray.com" }
-    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencyManagement {
@@ -54,20 +53,6 @@ dependencies {
     //end::discoveryclient[]
 
     compile "io.micronaut:management"
-
-    //tag::tracing[]
-    compile "io.micronaut:tracing"
-    //end::tracing[]
-
-    //tag::zipkin[]
-    runtime 'io.zipkin.brave:brave-instrumentation-http:4.19.0'
-    runtime 'io.zipkin.reporter2:zipkin-reporter:2.5.0'
-    compile 'io.opentracing.brave:brave-opentracing:0.30.0'
-    //end::zipkin[]
-
-    //tag::hamcrest[]
-    testCompile "org.hamcrest:hamcrest-all:$hamcrestAllVersion"
-    //end::hamcrest[]
 }
 
 shadowJar {

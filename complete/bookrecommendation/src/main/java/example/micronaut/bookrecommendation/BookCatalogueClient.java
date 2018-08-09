@@ -6,9 +6,14 @@ import io.micronaut.http.client.Client;
 import io.reactivex.Flowable;
 //end::packageandimports[]
 
+/*
 //tag::harcoded[]
 @Client("http://localhost:8081") // <1>
 //end::harcoded[]
+*/
+//tag::consul[]
+@Client(id = "bookcatalogue") // <1>
+//end::consul[]
 //tag::clazz[]
 public interface BookCatalogueClient extends BookCatalogueOperations {
 

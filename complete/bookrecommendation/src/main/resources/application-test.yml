@@ -1,8 +1,11 @@
+#tag::port[]
 micronaut:
     server:
-        port: -1
-#tag::zipkin[]
-tracing:
-    zipkin:
-        enabled: false
-#end::zipkin[]
+        port: -1 # <1>
+#end::port[]
+#tag::consul[]
+consul:
+    client:
+        registration:
+            enabled: false
+#end::consul[]

@@ -1,0 +1,31 @@
+Modify `build.gradle` to add `discovery-client` dependency.
+
+[source,java]
+.bookcatalogue/build.gradle
+----
+dependencies {
+    ...
+    ..
+    .
+include::{sourceDir}/bookcatalogue/build.gradle[tag=discoveryclient]
+}
+----
+
+Append to `bookcatalogue` service `application.yml` the following snippet:
+
+[source,yaml]
+.bookcatalogue/src/main/resources/application.yml
+----
+include::{sourceDir}/bookcatalogue/src/main/resources/application.yml[tag=consul]
+----
+
+
+Previous configuration registers a Micronaut app with Consul with minimal configuration. Discover a more complete list of Configuration options at https://docs.micronaut.io/snapshot/api/io/micronaut/discovery/consul/ConsulConfiguration.html[ConsulConfiguration].
+
+Disable consul registration in tests:
+
+[source,yaml]
+.bookcatalogue/src/main/resources/application-test.yml
+----
+include::{sourceDir}/bookcatalogue/src/main/resources/application-test.yml[tag=consul]
+----
