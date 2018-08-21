@@ -15,7 +15,7 @@ include::{sourceDir}/bookcatalogue/src/main/java/example/micronaut/bookcatalogue
 <2> The `@Get` annotation is used to map the index method to `/books` requests that use an HTTP GET.
 <3> You can return reactive types from your controller methods.
 
-The previous controller responds a `Flowable<Book>`. Create the `Book` POJO:
+The previous controller responds a `List<Book>`. Create the `Book` POJO:
 
 [source,java]
 .bookcatalogue/src/main/java/example/micronaut/bookcatalogue/Book.java
