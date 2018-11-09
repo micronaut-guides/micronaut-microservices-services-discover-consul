@@ -21,12 +21,12 @@ Create a Controller:
 include::{sourceDir}/bookinventory/src/main/java/example/micronaut/bookinventory/BooksController.java[]
 ----
 
-<1> Define https://docs.micronaut.io/snapshot/api/io/micronaut/validation/Validated.html[Validated] annotation at the class level to signal any class that requires validation.
+<1> Use https://docs.micronaut.io/snapshot/api/io/micronaut/validation/Validated.html[Validated] annotation at the class level to signal that this class requires validation.
 <2> The class is defined as a controller with the http://docs.micronaut.io/snapshot/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
-<3> By default a Micronaut's response uses `application/json` as `Content-Type`. We are returning a String not a JSON object. Because of that, we set it to `text/plain`.
-<4> The `@Get` annotation is used to map the index method to `/books/stock/{isbn}` requests that use an HTTP GET.
+<3> By default, `Content-Type` of Micronaut's response is `application/json` : override this with `text/plain` since we are returning a String, not a JSON object.
+<4> The `@Get` annotation is used to map the index method to an HTTP GET request on `/books/stock/{isbn}`.
 
-The previous controller uses a POJO:
+Create the POJO used by the controller:
 
 [source,java]
 .bookinventory/src/main/java/example/micronaut/bookinventory/BookInventory.java
@@ -64,3 +64,17 @@ include::{sourceDir}/bookinventory/src/main/resources/application-test.yml[tag=p
 ----
 
 <1> Start the micronaut microservice at a random port when running the tests.
+
+Run the unit test:
+
+[source,bash]
+----
+bookinventory $ ./gradlew test
+
+> Task :compileJava
+Note: Creating bean classes for 1 type elements
+
+
+BUILD SUCCESSFUL in 7s
+4 actionable tasks: 4 executed
+----
