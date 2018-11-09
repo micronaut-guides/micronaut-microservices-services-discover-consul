@@ -14,11 +14,14 @@ As shown in the previous image, the `bookcatalogue` hardcodes references to its 
 
 In the second part of this tutorial we are going to use a discovery service.
 
-o learn about registration patterns:
+[NOTE]
+====
+About __registration patterns__
 
 We will use a **self‑registration pattern**. Thus, each service instance is responsible for registering and
 deregistering itself with the service registry.
 Also, if required, a service instance sends heartbeat requests to prevent its registration from expiring.
+====
 
 Services register when they start up:
 
