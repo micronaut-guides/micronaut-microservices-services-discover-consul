@@ -14,7 +14,7 @@ include::{sourceDir}/bookcatalogue/src/main/java/example/micronaut/bookcatalogue
 ----
 
 <1> The class is defined as a controller with the http://docs.micronaut.io/snapshot/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
-<2> The `@Get` annotation is used to map the index method to `/books` requests that use an HTTP GET.
+<2> The `@Get` annotation is used to map the index method to an HTTP GET request on `/books`.
 
 The previous controller responds a `List<Book>`. Create the `Book` POJO:
 
@@ -56,3 +56,21 @@ include::{sourceDir}/bookcatalogue/src/main/resources/application-test.yml[tag=p
 ----
 
 <1> Start the micronaut microservice at a random port when running the tests.
+
+Run the unit test:
+
+[source,bash]
+----
+bookcatalogue $ ./gradlew test
+
+> Task :compileJava
+Note: Creating bean classes for 1 type elements
+
+> Task :compileTestJava
+
+> Task :test
+
+
+BUILD SUCCESSFUL in 9s
+4 actionable tasks: 4 executed
+----

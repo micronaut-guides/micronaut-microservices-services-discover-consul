@@ -7,19 +7,19 @@ import io.reactivex.Maybe;
 import javax.inject.Singleton;
 import javax.validation.constraints.NotBlank;
 
-@Requires(env = Environment.TEST)
+@Requires(env = Environment.TEST) // <1>
 @Fallback
 @Singleton
 public class BookInventoryClientStub implements BookInventoryOperations {
 
     @Override
     public Maybe<Boolean> stock(@NotBlank String isbn) {
-        if(isbn.equals("1491950358")) {
+        if(isbn.equals("1491950358")) { // <2>
             return Maybe.just(Boolean.TRUE);
 
-        } else if(isbn.equals("1680502395")) {
+        } else if(isbn.equals("1680502395")) { // <3>
             return Maybe.just(Boolean.FALSE);
         }
-        return Maybe.empty();
+        return Maybe.empty(); // <4>
     }
 }

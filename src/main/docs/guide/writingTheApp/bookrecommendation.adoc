@@ -59,8 +59,8 @@ include::{sourceDir}/bookrecommendation/src/main/java/example/micronaut/bookreco
 ----
 
 <1> The class is defined as a controller with the http://docs.micronaut.io/snapshot/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
-<2> Constructor injection
-<3> The `@Get` annotation is used to map the index method to `/books` requests that use an HTTP GET.
+<2> Clients are injected via constructor injection
+<3> The `@Get` annotation is used to map the index method to an HTTP GET request on `/books`.
 
 The previous controller returns a `Flowable<BookRecommendation>`. Create the `BookRecommendation` POJO:
 
@@ -81,6 +81,11 @@ Create `@Fallback` alternatives in the `test` classpath.
 ----
 include::{sourceDir}/bookrecommendation/src/test/java/example/micronaut/bookrecommendation/BookInventoryClientStub.java[]
 ----
+
+<1> Make this fallback class to be effective only when the micronaut environment __TEST__ is active
+<2> Here we arbitrarily decided that if everything else fails, that book's `stock` would be true
+<3> Similarly, we decided that other book's `stock` method would be false
+<4> Finally, any other book will have their `stock` method return an empty value
 
 [source,java]
 .bookrecommendation/src/test/java/example/micronaut/bookrecommendation/BookCatalogueClientStub.java
@@ -118,3 +123,11 @@ include::{sourceDir}/bookrecommendation/src/main/resources/application-test.yml[
 ----
 
 <1> Start the micronaut microservice at a random port when running the tests.
+
+Run the unit test:
+
+[source,bash]
+----
+bookrecommendation $ ./gradlew test
+
+----
