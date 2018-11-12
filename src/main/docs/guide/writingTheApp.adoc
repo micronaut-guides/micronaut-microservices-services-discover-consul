@@ -4,7 +4,7 @@ Lets describe the microservices you are going to build through the tutorial.
 
 * `bookinventory` - It exposes an endpoint to check whether a book has sufficient stock to fullfil an order.  I uses a domain consisting of a stock level and isbn.
 
-* `bookrecommendation` - It consumes previous services and exposes and endpoint which recommends book names which are in stock.
+* `bookrecommendation` - It consumes previous services and exposes an endpoint which recommends book names which are in stock.
 
 Initially we are going to hardcode the addresses where the different services are in the `bookcatalogue` service.
 
