@@ -6,10 +6,12 @@ import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.RxHttpClient
 import org.junit.Assume
 import spock.lang.AutoCleanup
+import spock.lang.IgnoreIf
 import spock.lang.Shared
 import spock.lang.Specification
 import spock.util.concurrent.PollingConditions
 
+@IgnoreIf({ System.getenv("TRAVIS") })
 class AcceptanceSpec extends Specification implements MicroserviceHealth {
 
     @Shared
