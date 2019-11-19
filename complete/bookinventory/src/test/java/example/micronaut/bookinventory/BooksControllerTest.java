@@ -25,7 +25,7 @@ public class BooksControllerTest {
     @Test
     public void testBooksController() {
         HttpResponse<Boolean> rsp = rxHttpClient.toBlocking().exchange(HttpRequest.GET("/books/stock/1491950358"), Boolean.class);
-        assertEquals(rsp.status(), HttpStatus.OK);
+        assertEquals(HttpStatus.OK, rsp.status());
         assertTrue(rsp.body());
     }
 
@@ -35,9 +35,6 @@ public class BooksControllerTest {
             rxHttpClient.toBlocking().exchange(HttpRequest.GET("/books/stock/XXXXX"), Boolean.class);
         });
 
-        assertEquals(
-                HttpStatus.NOT_FOUND,
-                thrown.getResponse().getStatus()
-        );
+        assertEquals(HttpStatus.NOT_FOUND, thrown.getResponse().getStatus());
     }
 }

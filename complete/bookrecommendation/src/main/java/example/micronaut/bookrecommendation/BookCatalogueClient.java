@@ -15,7 +15,7 @@ import io.reactivex.Flowable;
 @Client(id = "bookcatalogue") // <1>
 //end::consul[]
 //tag::clazz[]
-public interface BookCatalogueClient extends BookCatalogueOperations {
+interface BookCatalogueClient extends BookCatalogueOperations {
 
     @Get("/books")
     Flowable<Book> findAll();

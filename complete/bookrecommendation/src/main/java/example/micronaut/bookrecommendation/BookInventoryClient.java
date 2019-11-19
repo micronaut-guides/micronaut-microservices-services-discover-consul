@@ -17,7 +17,7 @@ import javax.validation.constraints.NotBlank;
 @Client(id = "bookinventory") // <1>
 //end::consul[]
 //tag::clazz[]
-public interface BookInventoryClient extends BookInventoryOperations {
+interface BookInventoryClient extends BookInventoryOperations {
 
     @Get("/books/stock/{isbn}")
     Maybe<Boolean> stock(@NotBlank String isbn);

@@ -101,8 +101,6 @@ Write a test:
 include::{sourceDir}/bookrecommendation/src/test/java/example/micronaut/bookrecommendation/BookControllerTest.java[]
 ----
 
-<1> For JUnit you can write methods to start and stop the server for the scope of the test
-
 Edit `application.yml`
 
 [source,yaml]
