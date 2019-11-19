@@ -13,7 +13,7 @@ Create a `BooksController` class to handle incoming HTTP requests into the `book
 include::{sourceDir}/bookcatalogue/src/main/java/example/micronaut/bookcatalogue/BooksController.java[]
 ----
 
-<1> The class is defined as a controller with the http://docs.micronaut.io/snapshot/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
+<1> The class is defined as a controller with the http://docs.micronaut.io/latest/api/io/micronaut/http/annotation/Controller.html[@Controller] annotation mapped to the path `/books`
 <2> The `@Get` annotation is used to map the index method to an HTTP GET request on `/books`.
 
 The previous controller responds a `List<Book>`. Create the `Book` POJO:
