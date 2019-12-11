@@ -18,3 +18,5 @@ consul:
   runningTheAppAfterConsul: Running the App
 nextSteps:
   title: Next Steps
+help:
+  title: Help with Micronaut  
