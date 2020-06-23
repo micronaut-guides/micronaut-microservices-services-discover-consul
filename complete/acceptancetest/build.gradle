@@ -1,48 +1,28 @@
-import io.github.httpbuilderng.http.HttpTask
-
 plugins {
-    id "io.github.http-builder-ng.http-plugin" version "0.1.1"
     id "groovy"
 }
 
 repositories {
-    mavenCentral()
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
-    implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
-    implementation 'org.codehaus.groovy:groovy-all:2.5.2'
+    compileOnly(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    compileOnly("io.micronaut:micronaut-inject-groovy")
+    implementation("io.micronaut.groovy:micronaut-runtime-groovy")
 
-    testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
-    testCompile 'org.spockframework:spock-core:1.2-groovy-2.5'
+    testImplementation(platform("io.micronaut:micronaut-bom:$micronautVersion"))
+    testImplementation("org.spockframework:spock-core") {
+        exclude group: "org.codehaus.groovy", module: "groovy-all"
+    }
+    testImplementation "io.micronaut:micronaut-http-client"
+    testImplementation "io.micronaut.security:micronaut-security-jwt"
+}
 
-    testCompile "io.micronaut:micronaut-runtime-groovy"
-    testCompile "io.micronaut:micronaut-http-client"
+// use JUnit 5 platform
+test {
+    useJUnitPlatform()
 }
 
 apply from: "${rootProject.projectDir}/gradle/testVerbose.gradle"
-
-task consulStatus(type:HttpTask){
-    config {
-        request.uri = 'http://localhost:8500'
-    }
-    get {
-        request.uri.path = '/v1/status/leader'
-        response.success {
-            logger.quiet('Consul running')
-        }
-        response.failure {
-            throw new GradleException("Consul is not runnnig")
-        }
-    }
-}
-
-test.dependsOn(consulStatus)
-
-consulStatus.onlyIf {
-    !System.getenv("TRAVIS")
-}
-test.onlyIf {
-    !System.getenv("TRAVIS")
-}

@@ -1,3 +1,5 @@
+include::{commondir}/common-micronautonex.adoc[]
+
 In this guide, we are going to create three microservices and register them with https://www.consul.io[Consul] Service discovery.
 
 ____
