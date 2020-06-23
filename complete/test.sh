@@ -29,11 +29,18 @@ else
   echo "Waiting 15 seconds for microservices to start"
 fi
 
-./gradlew run -parallel --console=plain & PID1=$!
-
 if [[ -z "${TRAVIS}" ]]; then
+  ./gradlew run -parallel --console=plain & PID1=$!
   sleep 5
 else
+  echo "Starting book inventory"
+  ./gradlew bookinventory:run --console=plain & PID1=$!
+  sleep 15
+  echo "Starting book catalogue"
+  ./gradlew bookcatalogue:run --console=plain & PID2=$!
+  sleep 15
+  echo "Starting book recommendation"
+  ./gradlew bookrecommendation:run --console=plain & PID3=$!
   sleep 15
 fi
 
