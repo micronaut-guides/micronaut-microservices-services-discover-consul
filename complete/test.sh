@@ -13,26 +13,29 @@ fi
 
 echo "Starting services"
 
+if [[ -z "${TRAVIS}" ]]; then
+  echo "Waiting 5 seconds for consul to start"
+else
+  echo "Waiting 60 seconds for consul to start"
+fi
+
 docker run -d -p 8500:8500 consul
 
 if [[ -z "${TRAVIS}" ]]; then
-  echo "Waiting 5 seconds for consul to start"
   sleep 5
+  echo "Waiting 5 seconds for microservices to start"
 else
-  echo "Waiting 15 seconds for consul to start"
-  sleep 15
+  sleep 60
+  echo "Waiting 15 seconds for microservices to start"
 fi
 
 ./gradlew run -parallel --console=plain & PID1=$!
 
 if [[ -z "${TRAVIS}" ]]; then
-  echo "Waiting 5 seconds for microservices to start"
   sleep 5
 else
-  echo "Waiting 15 seconds for microservices to start"
   sleep 15
 fi
-
 
 ./gradlew :acceptancetest:test --rerun-tasks --console=plain || EXIT_STATUS=$?
 
