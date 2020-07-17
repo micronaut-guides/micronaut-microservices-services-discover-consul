@@ -2,42 +2,43 @@ Run `bookcatalogue` microservice:
 
 [source,bash]
 ----
-bookcatalogue $ ./gradlew run
- Starting a Gradle Daemon, 2 stopped Daemons could not be reused, use --status for details
+complete $ ./gradlew bookcatelogue:run
 
- > Task :bookcatalogue:compileJava
- Note: Creating bean classes for 1 type elements
+> Task :bookcatalogue:run
+18:20:08.100 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 1243ms. Server Running: http://localhost:8081
+18:20:08.384 [nioEventLoopGroup-1-2] INFO  i.m.d.registration.AutoRegistration - Registered service [bookcatalogue] with Consul
+<=========----> 75% EXECUTING [22s]
+> :bookcatalogue:run
 
- > Task :bookcatalogue:run
- 14:28:34.034 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 499ms. Server Running: http://localhost:8081
 ----
 
 Run `bookinventory` microservice:
 
 [source,bash]
 ----
-bookinventory $ ./gradlew run
- Starting a Gradle Daemon, 2 stopped Daemons could not be reused, use --status for details
+complete $ ./gradlew bookintentory:run
 
- > Task :bookinventory:compileJava
- Note: Creating bean classes for 1 type elements
+> Task :bookinventory:run
+18:23:35.598 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 931ms. Server Running: http://localhost:8082
+18:23:35.831 [nioEventLoopGroup-1-2] INFO  i.m.d.registration.AutoRegistration - Registered service [bookinventory] with Consul
+<=========----> 75% EXECUTING [13s]
+> :bookinventory:run
 
- > Task :bookinventory:run
- 14:31:13.104 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 506ms. Server Running: http://localhost:8082
 ----
 
 Run `bookrecommendation` microservice:
 
 [source,bash]
 ----
-bookrecommendation $ ./gradlew run
+complete $ ./gradlew bookrecommendation:run
 Starting a Gradle Daemon, 2 busy and 2 stopped Daemons could not be reused, use --status for details
 
-> Task :bookrecommendation:compileJava
-Note: Creating bean classes for 3 type elements
-
 > Task :bookrecommendation:run
-14:31:57.389 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 523ms. Server Running: http://localhost:8080
+18:37:57.216 [main] INFO  io.micronaut.runtime.Micronaut - Startup completed in 886ms. Server Running: http://localhost:8080
+18:37:57.435 [nioEventLoopGroup-1-2] INFO  i.m.d.registration.AutoRegistration - Registered service [bookrecommendation] with Consul
+<=========----> 75% EXECUTING [8s]
+> :bookrecommendation:run
+
 ----
 
 You can run a cURL command to test the whole application:
